@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bekalan Baru</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myForm">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col class="ion-no-padding" size="12">
+          <ion-list class="ion-no-padding ion-no-margin">
+            <ion-item class="container">
+              <ion-label>No Rujukan</ion-label>
+              <ion-input type="text" formControlName="noRef" placeholder="Rujukan"></ion-input>
+            </ion-item>
+            <ion-item class="container">
+              <ion-label>Tarikh Kutipan</ion-label>
+              <ion-datetime
+                color="secondary"
+                placeholder="Pilih Tarikh"
+                formControlName="Tarikh"
+                displayFormat="MM/DD/YYYY"
+                [min]="dateTime"
+                max="2020-10-10"
+              ></ion-datetime>
+            </ion-item>
+            <ion-item class="container">
+              <ion-label>Kumpulan Produk</ion-label>
+              <ion-select
+                formControlName="Jenis"
+                placeholder="Pilih"
+                mode="ios"
+                okText="Ok"
+                cancelText="Batal"
+              >
+                <ion-select-option *ngFor="let jenis of jenisHasil" [value]="jenis">
+                  {{ jenis.key }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item class="container">
+              <ion-label>Produk</ion-label>
+              <ion-select
+                formControlName="Varieti"
+                placeholder="Pilih"
+                mode="ios"
+                okText="Ok"
+                cancelText="Batal"
+              >
+                <ion-select-option *ngFor="let varieti of varieties" [value]="varieti">
+                  {{ varieti.name }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item class="container">
+              <ion-label>Gred</ion-label>
+              <ion-select
+                formControlName="Grade"
+                placeholder="Pilih"
+                mode="ios"
+                okText="Ok"
+                cancelText="Batal"
+              >
+                <ng-container>
+                  <ion-select-option *ngFor="let varieti of gradeVarieties" [value]="varieti">
+                    {{ varieti.grade }}
+                  </ion-select-option>
+                </ng-container>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="container">
+            <ion-label position="floating">Harga Ladang (RM)</ion-label>
+            <ion-input readonly formControlName="HargaKoop" placeholder="Per Unit"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="container">
+            <ion-label position="floating">Harga Minta (RM)</ion-label>
+            <ion-input formControlName="Harga" placeholder="Per Unit"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="container">
+            <ion-label position="floating">Kuantiti</ion-label>
+            <ion-input formControlName="Kuantiti" placeholder="Kuantiti"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="container">
+            <ion-label position="floating">Unit</ion-label>
+            <ion-input readonly formControlName="Unit" placeholder="Unit"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="container">
+            <ion-label position="floating">Catatan</ion-label>
+            <ion-textarea
+              type="text"
+              formControlName="Remarks"
+              placeholder="Catatan"
+            ></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-text-right" size="12">
+          <ion-button color="lightgreen" (click)="onClick()">
+            <ion-label>
+              Hantar Jualan
+            </ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="onClick()" expand="block" shape="round" fill="solid">
+      <ion-icon slot="start" name="checkmark"></ion-icon>
+      Hantar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

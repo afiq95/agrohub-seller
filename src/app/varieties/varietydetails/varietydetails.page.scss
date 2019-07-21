@@ -1,0 +1,15 @@
+ion-header {
+  --background: none;
+  --border-style: none;
+}
+ion-toolbar {
+  --background: none;
+  --border-style: none;
+}
+.header-md::after {
+  background-image: none;
+}
+
+.name-title {
+  font-family: "Pt Sans Bold";
+}

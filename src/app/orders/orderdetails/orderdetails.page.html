@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title color="">Maklumat Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+      <ion-label class="card-title">{{ orderDetail?.refNo }}</ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="full">
+          <ion-label>
+            <p>Status</p>
+            <h2>{{ orderDetail?.status }}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label>
+            <p>Tarkih Pesan</p>
+            <h2>{{ orderDetail?.orderDate | date: "dd/MM/yyyy hh:mm aa" }}</h2>
+          </ion-label>
+        </ion-item>
+    
+        <ion-item lines="none" *ngIf="orderDetail != null">
+          <ion-label>
+            <p>Alamat Penghantaran</p>
+            <h2 [innerHtml]="orderDetail.customer.toVerticalAddress"></h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-label class="card-title-sub ion-padding-start">Senarai Item</ion-label>
+  <div *ngIf="orderDetail != null">
+    <ion-card *ngFor="let item of orderDetail.items">
+      <ion-card-content class="">
+        <ion-list>
+          <ion-item lines="full">
+            <ion-label>
+              <p>Nama Item</p>
+              <h2>{{ item.name }}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label>
+              <p>Gred</p>
+              <h2>{{ item.grade }}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label>
+              <p>Kuantiti</p>
+              <h2>{{ item.quantity }} {{ item.unit }}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <ion-card-header
+        class="ion-text-right ion-no-padding ion-padding-horizontal ion-padding-bottom"
+      >
+        <ion-card-title>
+          <ion-label class="price-tag">Jumlah Harga Item : RM {{ item.totalAmount }} </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col size="8">
+          <h5 class="total-title">
+            Jumlah Kesuluruhan
+          </h5>
+        </ion-col>
+        <ion-col size="4" class="ion-text-right total-title">
+            <h3>RM {{ orderDetail?.totalAmount }}</h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

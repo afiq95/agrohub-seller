@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar translucent="true">
+    <ion-buttons>
+      <ion-back-button color="dark" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-img #img [src]="'http://arex.bespoke.com.my:90' + detail?.farmProduce.photoUrl"></ion-img>
+</ion-header>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="8" class="ion-text-left">
+        <ion-label class="name-title">
+          <h2>
+            {{ detail?.name }}
+          </h2>
+        </ion-label>
+      </ion-col>
+      <ion-col size="4" class="ion-text-right">
+        <ion-button (click)="onClick()" fill="clear" color="primary">
+          <ion-icon slot="icon-only" name="star"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-label><h2>Sejarah Harga</h2></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item lines="full" *ngFor="let item of history">
+            <ion-label color="dark" *ngIf="history.length > 0">
+              <span class="ion-float-left">RM {{ item.farm }} / {{ item.unit }}</span>
+              <span class="ion-float-right">{{ item.updatedOn | date: "dd MMM hh:mm aa" }}</span>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

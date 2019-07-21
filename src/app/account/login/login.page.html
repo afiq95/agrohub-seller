@@ -1,0 +1,34 @@
+<ion-content>
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+      <form style="width:100%" class="ion-no-padding" [formGroup]="myForm">
+        <ion-list class="ion-padding login-form" style="width:100%">
+          <ion-item lines="none">
+            <ion-label><ion-icon name="ios-person" item-left></ion-icon></ion-label>
+            <ion-input formControlName="Username" clearInput type="text" placeholder="Kata Nama">
+            </ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label><ion-icon name="ios-lock" item-left></ion-icon></ion-label>
+            <ion-input
+              formControlName="Password"
+              clearInput
+              type="password"
+              placeholder="Kata Laluan"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-list class="ion-padding login-form-buttons" style="width: 100%">
+          <ion-button
+            (click)="Login()"
+            class="login-button"
+            expand="block"
+            shape="round"
+            color="secondary"
+            >Log Masuk
+          </ion-button>
+        </ion-list>
+      </form>
+    </ion-row>
+  </ion-grid>
+</ion-content>

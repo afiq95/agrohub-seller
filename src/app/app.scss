@@ -1,6 +1,104 @@
 // App Styles
 // ----------------------------------------------------------------------------
-// Put style rules here that you want to apply to the entire application. These 
-// styles are for the entire app and not just one component. Additionally, this 
-// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
 // and used throughout the application.
+
+ion-content {
+  --background: rgb(253, 253, 253);
+}
+
+ion-header > ion-toolbar > ion-title {
+  font-family: "San Francisco Light";
+}
+//START FONT
+
+@font-face {
+  font-family: "San Francisco Light";
+  src: url("../assets/fonts/SanFrancisco/SFProText-Light.ttf");
+}
+
+@font-face {
+  font-family: "San Francisco Medium";
+  src: url("../assets/fonts/SanFrancisco/SFProText-Medium.ttf");
+}
+
+@font-face {
+  font-family: "San Francisco Regular";
+  src: url("../assets/fonts/SanFrancisco/SFProText-Regular.ttf");
+}
+
+@font-face {
+  font-family: "San Francisco Bold";
+  src: url("../assets/fonts/SanFrancisco/SFProText-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Pt Sans Regular";
+  src: url("../assets/fonts/PTSans/PTSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Pt Sans Bold";
+  src: url("../assets/fonts/PTSans/PTSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url("../assets/fonts/OpenSans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  src: url("../assets/fonts/OpenSans/OpenSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans Semi Bold";
+  src: url("../assets/fonts/OpenSans/OpenSans-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans Light";
+  src: url("../assets/fonts/OpenSans/OpenSans-Light.ttf");
+}
+
+ion-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.cart-btn {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  font-size: 14px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: rgba(255, 0, 0, 0.9);
+  color: white;
+}
+
+.menu-profile {
+  --background: url("../assets/images/profilebg.png") repeat center center / cover;
+}
+
+.sub-item {
+  padding-left: 20px;
+}
+
+ion-menu-toggle > * ion-label {
+  font-family: "Open Sans Regular" !important;
+}
+
+ion-list {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+ion-item {
+  --background: rgba(0, 0, 0, 0);
+}

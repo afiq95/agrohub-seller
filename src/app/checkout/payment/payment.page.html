@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Maklumat Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myForm">
+    <ion-item lines="full">
+      <ion-label mode="ios" position="stacked" class="ion-label-floating">
+        Alamat Penghantaran
+      </ion-label>
+      <ion-textarea formControlName="Address" placeholder="Isi Alamat Penghantaran"></ion-textarea>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label mode="ios" position="floating" class="ion-label-floating">
+        Nombor Rujukan
+      </ion-label>
+      <ion-input formControlName="RefNo" placeholder="Letak Nombor Rujukan Anda"> </ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Tarikh Hantaran</ion-label>
+      <ion-datetime
+        color="secondary"
+        placeholder="Pilih Tarikh"
+        formControlName="DeliveryDate"
+        displayFormat="DD/MM/YYYY"
+        cancelText="Batal"
+        doneText="Ok"
+        [min]="dateTime"
+        max="2020-10-10"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label mode="ios" position="floating" class="ion-label-floating">Nota Pesanan</ion-label>
+      <ion-textarea formControlName="Remarks" placeholder="Letak Mesej Pesanan"> </ion-textarea>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Pilihan Bayaran</ion-label>
+      <ion-select
+        placeholder="Cara bayaran"
+        mode="ios"
+        okText="Ok"
+        cancelText="Batal"
+        formControlName="JenisBayaran"
+      >
+        <ion-select-option value="cash">
+          Bayaran tunai
+        </ion-select-option>
+        <ion-select-option value="online">
+          Online Banking
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="full" *ngIf="transactionMode == 'online'">
+      <ion-label>Bank</ion-label>
+      <ion-select placeholder="Pilih Bank" mode="ios">
+        <ion-select-option value="cimb">
+          <ion-icon name="card"></ion-icon>
+          CIMB BANK
+        </ion-select-option>
+        <ion-select-option value="maybank"
+          ><ion-icon name="card"></ion-icon>
+          MAYBANK
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col size="8">
+          <h5 class="total-title">
+            Jumlah Kesuluruhan
+          </h5>
+        </ion-col>
+        <ion-col size="4" class="ion-text-right total-title">
+          <h3>RM{{ item }}</h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button class="ion-no-padding" expand="full" shape="round" (click)="confirmPay()">
+      Membuat Pesanan
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

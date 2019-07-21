@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-transform: capitalize">{{ variety.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="pins">
+    <ion-card class="pin" style="margin:8px;" *ngFor="let item of items">
+      <ion-card-header class="ion-no-padding ">
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col class="ion-no-padding" size="6">
+              <ion-button
+                class="fav-btn ion-no-padding"
+                (click)="removeFromFav(item)"
+                fill="solid"
+                *ngIf="item.isFav"
+                expand=""
+                size="small"
+              >
+                <ion-icon class="ion-no-padding" slot="icon-only" name="star"></ion-icon>
+              </ion-button>
+              <ion-button
+                class="fav-btn ion-no-padding"
+                (click)="addToFav(item)"
+                fill="solid"
+                *ngIf="!item.isFav"
+                expand=""
+                size="small"
+              >
+                <ion-icon class="ion-no-padding" slot="icon-only" name="star-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="6" class="ion-no-padding ion-text-right">
+              <ion-badge class="price-badge" color="primary" mode="ios">
+                RM {{ item.wholeSale }} / {{ item.unit }}
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+      <img
+        style="margin-top:-2.2rem"
+        [src]="'http://arex.bespoke.com.my:90' + item.farmProduce.photoUrl"
+      />
+      <ion-item detail="true" lines="none" (click)="goToDetail(item)">
+        <ion-text color="dark">
+          <ion-label class="item-name">
+            <h6>
+              {{ item.name }}
+            </h6>
+          </ion-label>
+          <ion-label class="item-grade">
+            <small>Gred {{ item.grade }}</small>
+          </ion-label>
+        </ion-text>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

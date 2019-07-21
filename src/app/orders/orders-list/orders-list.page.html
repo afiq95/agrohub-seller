@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-select
+        [selectedText]="'Pesanan ' + title"
+        [(ngModel)]="state"
+        [interfaceOptions]="customPopoverOptions"
+        interface="popover"
+        placeholder="Pesanan"
+        (ionChange)="changeRule($event)"
+      >
+        <ion-select-option [value]="['pending']">Dalam Proses</ion-select-option>
+        <ion-select-option [value]="['new']">Baru</ion-select-option>
+        <ion-select-option [value]="['cancelled']">Dibatalkan</ion-select-option>
+        <ion-select-option [value]="['expired']">Luput</ion-select-option>
+        <ion-select-option [value]="['completed']">Selesai</ion-select-option>
+      </ion-select>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="belian.length > 0; else elseTemplate">
+    <ion-list>
+      <ion-item
+        lines="full"
+        detail="true"
+        *ngFor="let item of belian"
+        (click)="openOrderDetail(item)"
+      >
+        <ion-label class="pesanan-content">
+          <h1 style="text-transform: uppercase">{{ item.refNo }}</h1>
+          <h2>{{ item.items.length }} hasil dibeli</h2>
+          <h2>
+            RM {{ item.totalAmount }}
+            <span class="ion-float-right">{{ item.orderDate | date: "dd MMM hh:mm aa" }}</span>
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <h2 class="ion-text-center">Tiada Pesanan {{ title }}</h2>
+  </ng-template>
+</ion-content>

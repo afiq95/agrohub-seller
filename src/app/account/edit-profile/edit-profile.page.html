@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="edit()" color="dark">
+        <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Kemaskini Akaun</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-label class="card-title-sub ion-no-padding ion-padding-top">
+        Maklumat Peribadi
+      </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="full">
+          <ion-label position="stacked">Nama Penuh</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.name"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="stacked">Telefon Bimbit</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.mobileNo"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="stacked">Emel</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.email"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="stacked">Alamat 1</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.street1"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="stacked">Alamat 2</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.street2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Poskod</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.postcode"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="stacked">Bandar</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.city"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="stacked">Negeri</ion-label>
+          <ion-input [(ngModel)]="userInfo.contact.state"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

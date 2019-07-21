@@ -2,3 +2,81 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+ion-toolbar {
+  --background: rgba(0, 0, 0, 0);
+}
+
+ion-card.iklan {
+  // border-radius: 0 !important;
+}
+
+ion-col > ion-text > h5 {
+  font-family: "San Francisco Light";
+}
+
+ion-card-content {
+  font-family: "Open Sans Regular";
+}
+
+
+.varieti {
+  font-family: "Open Sans Regular";
+}
+
+ion-button {
+  --border-radius: 15px;
+}
+
+.badge-vege {
+  background-color: #74dc53;
+}
+
+.badge-fruit {
+  background-color: #3eadeb;
+}
+
+.badge-cili {
+  background-color: #f6de32;
+}
+
+.badge-fav {
+  background-color: #f54a76;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.more-button {
+  font-family: "San Francisco Regular";
+}
+
+.item-badge{
+  width:30px;
+  height:30px;
+}

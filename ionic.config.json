@@ -1,5 +1,7 @@
 {
   "name": "AgroHubSeller",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
