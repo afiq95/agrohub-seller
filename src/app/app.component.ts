@@ -55,12 +55,15 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
     this.event.subscribe("changeMenu", item => {
       console.log(item);
       this.disableMenu = item;
+    });
+    this.event.subscribe("login", async item => {
+      this.userInfo = (await this.api.getUserContact(await this.storage.getContactId())).data;
     });
   }
 

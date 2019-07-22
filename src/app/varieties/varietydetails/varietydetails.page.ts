@@ -15,6 +15,8 @@ export class VarietydetailsPage implements OnInit {
   @ViewChild("img") img: any;
   quantity: number = 1;
   history: any;
+  isFav: boolean;
+  favs: any[] = [];
   constructor(
     public router: Router,
     public storage: LocalStorageProviderService,
@@ -23,14 +25,17 @@ export class VarietydetailsPage implements OnInit {
     private api: ApiProviderService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.detail = this.router.getCurrentNavigation().extras.state.detail;
+    this.favs = await this.storage.getFavItems();
+    this.isFav = this.getFavourite(this.detail);
+
     console.log(this.detail);
     setTimeout(() => {
       this.img.el.style.marginTop = "-5rem";
     }, 2);
   }
-  
+
   async ionViewWillEnter() {
     this.history = (await this.api.getPriceHistory(
       this.detail.farmProduceId,
@@ -61,5 +66,24 @@ export class VarietydetailsPage implements OnInit {
 
   removeMore() {
     if (this.quantity > 0) this.quantity--;
+  }
+
+  async addToFav() {
+    this.isFav = true;
+    await this.storage.addFavItem(this.detail.farmProduceId, this.detail.grade);
+  }
+
+  async removeFromFav() {
+    this.isFav = false;
+    await this.storage.removeFavItem(this.detail.farmProduceId, this.detail.grade);
+  }
+
+  getFavourite(item) {
+    var found = this.favs.findIndex(x => {
+      return item.farmProduceId == x.id && item.grade == x.grade;
+    });
+    console.log(found);
+    if (found > -1) return true;
+    else return false;
   }
 }

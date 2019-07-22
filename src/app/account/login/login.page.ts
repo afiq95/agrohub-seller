@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
         await this.storage.setContactId(loginResponse.data.contactId);
       }
       this.event.publish("changeMenu", false);
+      this.event.publish("login");
       this.router.navigate(["/home"], { replaceUrl: true });
     } catch (ex) {
       var toast = this.toastController.create({

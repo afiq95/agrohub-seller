@@ -20,26 +20,25 @@
       (click)="goToDetail(item)"
       *ngFor="let item of searchResult"
     >
-      <ion-grid fixed>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="2" class="ion-text-left">
-            <ion-img [src]="'http://arex.bespoke.com.my:90' + item.farmProduce.photoUrl"></ion-img>
-          </ion-col>
-          <ion-col size="7" class="ion-no-padding ion-padding-vertical ion-text-left">
-            <ion-label class="varieti">
-              <h2>
-                {{ item.name }}
-              </h2>
-              <h3>Gred {{ item.grade }}</h3>
-            </ion-label>
-          </ion-col>
-          <ion-col size="2" class="ion-text-left">
-            <ion-button fill="solid" color="tertiary" style="font-family: 'Open Sans Semi Bold'">
-              RM {{ item.wholeSale }} / {{ item.unit }}
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-img
+        slot="start"
+        style="max-width: 50px;max-height:50px"
+        [src]="'http://arex.bespoke.com.my:90' + item.farmProduce.photoUrl"
+      ></ion-img>
+      <ion-label class="varieti">
+        <h2>
+          {{ item.name }}
+        </h2>
+        <h3>Gred {{ item.grade }}</h3>
+      </ion-label>
+      <ion-button
+        slot="end"
+        fill="solid"
+        color="tertiary"
+        style="font-family: 'Open Sans Semi Bold'"
+      >
+        RM {{ item.wholeSale }} / {{ item.unit }}
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { LocalStorageProviderService } from "../providers/local-storage-provider.service";
 import { PopoverController, Events } from "@ionic/angular";
 import { SearchResultPage } from "../popovers/search-result/search-result.page";
+import { LoadingService } from "../providers/loading.service";
 
 @Component({
   selector: "app-home",
@@ -24,10 +25,12 @@ export class HomePage implements OnInit {
     public router: Router,
     public storage: LocalStorageProviderService,
     public popoverController: PopoverController,
-    public event: Events
+    public event: Events,
+    public loadProvider: LoadingService
   ) {}
 
   async ngOnInit() {
+    this.loadProvider.CreateAndPresent();
     this.event.publish("changeMenu", false);
     this.items = (await this.api.getTypeOfProduce()).data;
     this.favs = await this.storage.getFavItems();
@@ -45,6 +48,8 @@ export class HomePage implements OnInit {
     } else {
       this.jualan = [];
     }
+
+    this.loadProvider.DismissLoad();
   }
 
   async viewVarieties(item) {
@@ -85,7 +90,7 @@ export class HomePage implements OnInit {
       }
     });
   }
-  
+
   goSearch() {
     this.router.navigate(["/search-result"]);
   }

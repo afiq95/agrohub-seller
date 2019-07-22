@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApiProviderService } from "src/app/providers/api-provider.service";
 import { LocalStorageProviderService } from "src/app/providers/local-storage-provider.service";
+import { LoadingService } from "src/app/providers/loading.service";
 
 @Component({
   selector: "app-varietieslist",
@@ -17,11 +18,13 @@ export class VarietieslistPage implements OnInit {
   constructor(
     public router: Router,
     public api: ApiProviderService,
-    public storage: LocalStorageProviderService
+    public storage: LocalStorageProviderService,
+    public loadService: LoadingService
   ) {}
 
   async ngOnInit() {
     this.state = this.router.getCurrentNavigation().extras.state;
+    this.loadService.CreateAndPresent();
     this.favs = await this.storage.getFavItems();
     if (this.state.isFav) {
       var latest = (await this.api.getItemsPricing()).data;
@@ -53,6 +56,7 @@ export class VarietieslistPage implements OnInit {
       console.log(this.items);
       this.variety.name = this.variety.name.toLowerCase();
     }
+    this.loadService.DismissLoad();
   }
 
   async goToDetail(item) {

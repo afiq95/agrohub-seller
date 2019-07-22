@@ -13,3 +13,11 @@ ion-toolbar {
 .name-title {
   font-family: "Pt Sans Bold";
 }
+
+.back-btn {
+  --border-radius: 20px;
+  --background: rgba(255, 255, 255, 0.5);
+  --color: #222428;
+  --padding-end: 4px;
+  --padding-start: 4px;
+}
