@@ -26,25 +26,13 @@
           <ion-icon slot="start" name="map"></ion-icon>
           <ion-label class="info-content">
             <p>Alamat</p>
-            <h2
-              [innerHtml]="
-                item.street1 +
-                ', ' +
-                item.street2 +
-                '<br/>' +
-                item.postcode +
-                ', ' +
-                item.city +
-                '<br/>' +
-                item.state
-              "
-            ></h2>
+            <h2 [innerHtml]="item.toVerticalAddress"></h2>
           </ion-label>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-button (click)="onClick()" fill="solid" shape="round">
+  <ion-button fill="solid" shape="round">
     <ion-icon slot="start" name="add"></ion-icon>
     Tambah Ladang
   </ion-button>

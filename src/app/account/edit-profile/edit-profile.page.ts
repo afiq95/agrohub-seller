@@ -91,7 +91,7 @@ export class EditProfilePage implements OnInit {
           {
             text: "OK",
             handler: () => {
-              this.router.navigate(["/profile"], { replaceUrl: true });
+              this.router.navigate(["/tabs/profile"], { replaceUrl: true });
             }
           }
         ]
@@ -107,7 +107,7 @@ export class EditProfilePage implements OnInit {
             text: "OK",
             handler: () => {
               setTimeout(() => {
-                this.router.navigate(["/profile"], { replaceUrl: true });
+                this.router.navigate(["/tabs/profile"], { replaceUrl: true });
               }, 500);
             }
           }

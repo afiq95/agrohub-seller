@@ -13,5 +13,6 @@ export class LadangListPage implements OnInit {
 
   async ngOnInit() {
     this.farms = (await this.api.getUserInfo(await this.storage.getContactId())).data.farms;
+    console.log(this.farms);
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ApiProviderService } from "../providers/api-provider.service";
 import { Router } from "@angular/router";
 import { LocalStorageProviderService } from "../providers/local-storage-provider.service";
-import { PopoverController, Events } from "@ionic/angular";
+import { PopoverController, Events, AlertController } from "@ionic/angular";
 import { SearchResultPage } from "../popovers/search-result/search-result.page";
 import { LoadingService } from "../providers/loading.service";
 
@@ -26,16 +26,38 @@ export class HomePage implements OnInit {
     public storage: LocalStorageProviderService,
     public popoverController: PopoverController,
     public event: Events,
-    public loadProvider: LoadingService
+    public loadProvider: LoadingService,
+    public alertController: AlertController
   ) {}
 
   async ngOnInit() {
     this.loadProvider.CreateAndPresent();
+    var contactId = await this.storage.getContactId();
     this.event.publish("changeMenu", false);
+    var temp = (await this.api.getUserInfo(contactId)).data;
+    if (!temp.isFound) {
+      console.log(temp);
+      const alert = await this.alertController.create({
+        header: "Maklumat Tidak Lengkap",
+        message: "Maklumat pengguna anda tidak lengkap. Tekan okay untuk kemaskini",
+        buttons: [
+          {
+            text: "Okay",
+            handler: () => {
+              this.router.navigate(["/edit-profile"], {
+                replaceUrl: true
+              });
+            }
+          }
+        ],
+        backdropDismiss: false,
+        keyboardClose: true
+      });
+      alert.present();
+    }
     this.items = (await this.api.getTypeOfProduce()).data;
     this.favs = await this.storage.getFavItems();
     this.itemInCart = (await this.storage.getFromCart()).length;
-    var contactId = await this.storage.getContactId();
 
     this.jualan = (await this.api.getSuppliesList()).data.filter(x => {
       return x.status == "Pending" && x.supplierId == contactId;

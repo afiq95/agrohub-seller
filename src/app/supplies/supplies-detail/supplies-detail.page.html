@@ -38,7 +38,7 @@
             <h2>{{ detail?.harvestDate | date: "dd/MM/yyyy hh:mm aa" }}</h2>
           </ion-label>
         </ion-item>
-        <ion-item lines="none" *ngIf="orderDetail != null">
+        <ion-item lines="none" *ngIf="detail != null">
           <ion-label>
             <p>Alamat Penghantaran</p>
             <h2 [innerHtml]="detail?.supplier.toVerticalAddress"></h2>

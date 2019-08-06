@@ -113,7 +113,7 @@ export class PaymentPage implements OnInit {
               await this.storage.setCart([]);
               setTimeout(() => {
                 this.event.publish("cartChanges");
-                this.router.navigate(["/home"], { replaceUrl: true });
+                this.router.navigate(["/tabs/home"], { replaceUrl: true });
               }, 150);
             }
           }

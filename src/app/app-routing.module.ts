@@ -5,14 +5,19 @@ import { AuthGuardService } from "./providers/auth-guard.service";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "home",
-    pathMatch: "full"
-  },
-  {
-    path: "home",
-    loadChildren: "./home/home.module#HomePageModule",
+    loadChildren: "./tabs/tabs.module#TabsPageModule",
     canActivate: [AuthGuardService]
   },
+  // {
+  //   path: "tabs",
+  //   loadChildren: "./tabs/tabs.module#TabsPageModule",
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: "home",
+  //   loadChildren: "./home/home.module#HomePageModule",
+  //   canActivate: [AuthGuardService]
+  // },
   {
     path: "list",
     loadChildren: "./list/list.module#ListPageModule"
@@ -55,10 +60,22 @@ const routes: Routes = [
     loadChildren:
       "./notifications/notifications-list/notifications-list.module#NotificationsListPageModule"
   },
-  { path: 'ladang-list', loadChildren: './ladang/ladang-list/ladang-list.module#LadangListPageModule' },
-  { path: 'supplies-detail', loadChildren: './supplies/supplies-detail/supplies-detail.module#SuppliesDetailPageModule' },
-  { path: 'supplies-list', loadChildren: './supplies/supplies-list/supplies-list.module#SuppliesListPageModule' },
-  { path: 'new-supply', loadChildren: './supplies/new-supply/new-supply.module#NewSupplyPageModule' }
+  {
+    path: "ladang-list",
+    loadChildren: "./ladang/ladang-list/ladang-list.module#LadangListPageModule"
+  },
+  {
+    path: "supplies-detail",
+    loadChildren: "./supplies/supplies-detail/supplies-detail.module#SuppliesDetailPageModule"
+  },
+  {
+    path: "supplies-list",
+    loadChildren: "./supplies/supplies-list/supplies-list.module#SuppliesListPageModule"
+  },
+  {
+    path: "new-supply",
+    loadChildren: "./supplies/new-supply/new-supply.module#NewSupplyPageModule"
+  }
 ];
 
 @NgModule({

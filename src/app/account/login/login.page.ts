@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
       }
       this.event.publish("changeMenu", false);
       this.event.publish("login");
-      this.router.navigate(["/home"], { replaceUrl: true });
+      this.router.navigate(["/tabs/home"], { replaceUrl: true });
     } catch (ex) {
       var toast = this.toastController.create({
         message: "Salah login",

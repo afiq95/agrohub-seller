@@ -131,7 +131,7 @@ export class NewSupplyPage implements OnInit {
           {
             text: "OK",
             handler: () => {
-              this.router.navigate(["/home"], { replaceUrl: true });
+              this.router.navigate(["/tabs/home"], { replaceUrl: true });
             }
           }
         ]

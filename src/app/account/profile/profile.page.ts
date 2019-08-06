@@ -35,4 +35,11 @@ export class ProfilePage {
       }
     });
   }
+
+  async logout() {
+    this.storage.clearData();
+    this.router.navigate(["/login"], {
+      replaceUrl: true
+    });
+  }
 }
