@@ -53,8 +53,8 @@ export class NewSupplyPage implements OnInit {
       Harga: ["", Validators.required],
       HargaKoop: new FormControl({ value: "", disabled: true }),
       Tarikh: ["", Validators.required],
-      Grade: ["", Validators.required],
-      Remarks: ["", Validators.required],
+      Grade: new FormControl({ value: "", disabled: true }, Validators.required),
+      Remarks: [""],
       noRef: ["", Validators.required]
     });
   }
@@ -72,6 +72,7 @@ export class NewSupplyPage implements OnInit {
       });
       console.log(this.varieties);
       this.myForm.controls["Varieti"].enable();
+      this.myForm.controls["Grade"].enable();
     });
 
     this.myForm.controls["Varieti"].valueChanges.subscribe(x => {
@@ -130,7 +131,7 @@ export class NewSupplyPage implements OnInit {
         buttons: [
           {
             text: "OK",
-            handler: () => {
+            handler: async () => {
               this.router.navigate(["/tabs/home"], { replaceUrl: true });
             }
           }

@@ -11,7 +11,7 @@ import { LoadingService } from "../providers/loading.service";
   templateUrl: "home.page.html",
   styleUrls: ["home.page.scss"]
 })
-export class HomePage implements OnInit {
+export class HomePage{
   items: any[];
   itemInCart: any;
   jualan: any[] = [];
@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
     public alertController: AlertController
   ) {}
 
-  async ngOnInit() {
+  async ionViewWillEnter() {
     this.loadProvider.CreateAndPresent();
     var contactId = await this.storage.getContactId();
     this.event.publish("changeMenu", false);

@@ -25,7 +25,7 @@ export class LoadingService {
   }
 
   async DismissLoad() {
-    this.loading.dismiss();
+    await this.loading.dismiss();
     this.loading = await this.loadingController.create({
       spinner: "circles",
       backdropDismiss: false

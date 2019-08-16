@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="" color="dark" defaultHref="home"></ion-back-button>
+      <ion-back-button text="" color="dark" defaultHref="/tabs/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Bekalan Baru</ion-title>
   </ion-toolbar>
@@ -23,7 +23,7 @@
                 color="secondary"
                 placeholder="Pilih Tarikh"
                 formControlName="Tarikh"
-                displayFormat="MM/DD/YYYY"
+                displayFormat="DD/MM/YYYY"
                 [min]="dateTime"
                 max="2020-10-10"
               ></ion-datetime>
